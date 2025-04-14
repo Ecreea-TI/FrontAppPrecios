@@ -190,14 +190,14 @@
             filteredData.forEach(item => {
                 exportData.push([
                     item.RUC || '-',
-                    item.RAZON || '-',
+                    item.RAZON_SOCIAL || '-',
                     item.DEPARTAMENTO || '-',
                     item.PROVINCIA || '-',
                     item.DISTRITO || '-',
                     item.DIRECCION || '-',
                     item.PRODUCTO || '-',
                     item.UNIDAD || '-',
-                    item.PRECIO_VENTA ? `S/ ${parseFloat(item.PRECIO_VENTA).toFixed(2)}` : '-',
+                    item.PRECIO ? `S/ ${parseFloat(item.PRECIO).toFixed(2)}` : '-',
                     item.FCHA_REGISTRO || '-'
                 ]);
             });
