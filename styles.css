@@ -311,6 +311,10 @@ body {
 .data-grid tr {
     text-align: left;
 }
+#priceHeader i {
+    font-style: normal;
+    margin-left: 5px;
+}
 
 /* Contenedor principal */
 .container {

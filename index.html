@@ -523,15 +523,15 @@
         }
 
         // Función para ordenar la tabla por precio
-let priceSortOrder = 'asc';
+let priceSortOrder = 'desc';
 const priceHeader = document.getElementById('priceHeader');
 priceHeader.addEventListener('click', () => {
     const existingIcon = priceHeader.querySelector('i');
     if (existingIcon) {
-        existingIcon.className = priceSortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down';
+        existingIcon.innerHTML = priceSortOrder === 'asc' ? '&darr;' : '&uarr;';
     } else {
         const sortIcon = document.createElement('i');
-        sortIcon.className = priceSortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down';
+        sortIcon.innerHTML = priceSortOrder === 'asc' ? '&darr;' : '&uarr;';
         priceHeader.appendChild(sortIcon);
     }
 });
@@ -542,13 +542,14 @@ function sortTableByPrice() {
         sortIcon = document.createElement('i');
         priceHeader.appendChild(sortIcon);
     }
-    sortIcon.className = priceSortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down';
-
+    
     priceSortOrder = priceSortOrder === 'asc' ? 'desc' : 'asc';
-sortIcon.className = priceSortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down';
+    sortIcon.innerHTML = priceSortOrder === 'asc' ? '↑' : '↓';
+    
     filteredData.sort((a, b) => {
-        const priceA = parseFloat(a.PRECIO_VENTA || 0);
-        const priceB = parseFloat(b.PRECIO_VENTA || 0);
+        const priceA = parseFloat(a.PRECIO || 0);
+        const priceB = parseFloat(b.PRECIO || 0);
+        if (isNaN(priceA) || isNaN(priceB)) return 0;
         return priceSortOrder === 'asc' ? priceA - priceB : priceB - priceA;
     });
     updateTable();
